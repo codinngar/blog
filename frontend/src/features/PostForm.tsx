@@ -1,6 +1,16 @@
-import { useState } from "react";
 import { createPost } from "../api/posts";
-import TextEditor from "../components/TextEditor";
+import { Tiptap } from "@/components/rich-text-editor/Tiptap";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
 
 export const PostForm = () => {
   const [title, setTitle] = useState("");
@@ -8,9 +18,7 @@ export const PostForm = () => {
   const [imageURL, setImageURL] = useState("");
   const [content, setContent] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     if (!title || !description || !imageURL || !content) {
       alert("Please fill all fields");
       return;
@@ -25,11 +33,6 @@ export const PostForm = () => {
       };
       await createPost(post);
       alert("Post submitted!");
-      // Reset form
-      setTitle("");
-      setDescription("");
-      setImageURL("");
-      setContent("");
     } catch (error: unknown) {
       if (error instanceof Error) {
         alert("Failed to submit: " + error.message);
@@ -40,67 +43,53 @@ export const PostForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="grid gap-6 mb-6 md:grid-cols-2">
-        <div>
-          <label
-            htmlFor="title"
-            className="block mb-2 text-sm font-medium text-gray-900e"
-          >
-            Title
-          </label>
-          <input
-            type="text"
-            id="title"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="Enter post title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="description"
-            className="block mb-2 text-sm font-medium text-gray-900e"
-          >
-            Description
-          </label>
-          <input
-            type="text"
-            id="description"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="Enter post description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="image-url"
-            className="block mb-2 text-sm font-medium text-gray-900e"
-          >
-            Image URL
-          </label>
-          <input
-            type="text"
-            id="image-url"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="Enter header image URL"
-            value={imageURL}
-            onChange={(e) => setImageURL(e.target.value)}
-            required
-          />
-        </div>
-        <TextEditor content={content} setContent={setContent} />
-        <button
-          type="submit"
-          className="text-white bg-blue-700 cursor-pointer hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-        >
-          Submit
-        </button>
-      </div>
-    </form>
+    <div className="p-8">
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle className="text-center text-2xl">Create post</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form>
+            <div className="grid md:grid-cols-2 w-full items-center gap-4">
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="title">Title</Label>
+                <Input
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  id="title"
+                  placeholder="Learn to code"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="description">Description</Label>
+                <Input
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  id="description"
+                  placeholder="A very good post"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="image-url">Image URL</Label>
+                <Input
+                  value={imageURL}
+                  onChange={(e) => setImageURL(e.target.value)}
+                  id="image-url"
+                  placeholder="https://image.jpg"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label>Content</Label>
+                <Tiptap content={content} onChange={setContent} />
+              </div>
+            </div>
+          </form>
+        </CardContent>
+        <CardFooter className="flex justify-between">
+          <Button variant="outline">Cancel</Button>
+          <Button onClick={handleSubmit}>Submit</Button>
+        </CardFooter>
+      </Card>
+    </div>
   );
 };

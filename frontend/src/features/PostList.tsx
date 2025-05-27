@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { getAllPosts } from "../api/posts";
-import PostCard from "../components/PostCard";
+import { PostCard } from "../components/PostCard";
 import type { Post } from "../types/post";
 
-export default function PostList() {
+export const PostList = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -26,4 +26,4 @@ export default function PostList() {
       ))}
     </div>
   );
-}
+};

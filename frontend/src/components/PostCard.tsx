@@ -14,7 +14,7 @@ interface PostCardProps {
   post: Post;
 }
 
-const PostCard = ({ post }: PostCardProps) => {
+export const PostCard = ({ post }: PostCardProps) => {
   return (
     <Card className="pt-0 overflow-hidden hover:shadow-lg transition-shadow">
       <div className="aspect-video relative overflow-hidden">
@@ -58,4 +58,3 @@ const PostCard = ({ post }: PostCardProps) => {
     </Card>
   );
 };
-export default PostCard;
