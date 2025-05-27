@@ -47,15 +47,14 @@ import { TextDirection } from "reactjs-tiptap-editor/textdirection";
 import { Mention } from "reactjs-tiptap-editor/mention";
 import { Attachment } from "reactjs-tiptap-editor/attachment";
 import { Mermaid } from "reactjs-tiptap-editor/mermaid";
-import { Twitter } from 'reactjs-tiptap-editor/twitter'; 
-import { Drawer } from 'reactjs-tiptap-editor/drawer'; 
+import { Drawer } from "reactjs-tiptap-editor/drawer";
 
 import "reactjs-tiptap-editor/style.css";
 import "prism-code-editor-lightweight/layout.css";
 import "prism-code-editor-lightweight/themes/github-dark.css";
 import "react-image-crop/dist/ReactCrop.css";
 import "katex/dist/katex.min.css";
-import 'easydrawer/styles.css'; 
+import "easydrawer/styles.css";
 
 const extensions = [
   BaseKit,
@@ -75,6 +74,33 @@ const extensions = [
   History,
   HorizontalRule,
   Iframe,
+  Mermaid,
+  Katex,
+  ExportPdf,
+  TextDirection,
+  Indent,
+  Italic,
+  LineHeight,
+  Link,
+  ListItem,
+  MoreMark,
+  ColumnActionButton,
+  OrderedList,
+  Selection,
+  SlashCommand,
+  Strike,
+  SubAndSuperScript,
+  Table,
+  TaskList,
+  TextAlign,
+  TextBubble,
+  TrailingNode,
+  TextUnderline,
+  SearchAndReplace,
+  Emoji,
+  ExportWord,
+  TableOfContents,
+  Mention,
   Image.configure({
     upload: (files) => {
       return new Promise((resolve) => {
@@ -102,10 +128,6 @@ const extensions = [
       });
     },
   }),
-  Mermaid,
-  Katex,
-  ExportPdf,
-  TextDirection,
   Drawer.configure({
     upload: (file) => {
       return new Promise((resolve) => {

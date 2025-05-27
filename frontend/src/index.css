@@ -3,3 +3,7 @@
 .tiptap {
   outline: none;
 }
+
+.reactjs-tiptap-editor {
+  border: 1px solid gray;
+}
