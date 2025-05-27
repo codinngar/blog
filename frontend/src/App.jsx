@@ -1,4 +1,5 @@
 import { TextEditor } from "./components/TextEditor";
+import { PostForm } from "./features/PostForm";
 import PostList from "./features/PostList";
 
 export default function App() {
@@ -39,7 +40,8 @@ export default function App() {
   return (
     <div className="p-4">
       {/* <PostList posts={posts} /> */}
-      <TextEditor />
+      {/* <TextEditor /> */}
+      <PostForm />
     </div>
   );
 }
