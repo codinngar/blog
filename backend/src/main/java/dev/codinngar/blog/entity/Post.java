@@ -20,6 +20,7 @@ public class Post {
     private String author;
     private String title;
     private String description;
+    private String content;
     private String imageURL;
     private LocalDateTime createdAt;
 
