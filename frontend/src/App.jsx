@@ -1,6 +1,7 @@
 import { TextEditor } from "./components/TextEditor";
 import { PostForm } from "./features/PostForm";
 import PostList from "./features/PostList";
+import { Home } from "./pages/Home";
 
 export default function App() {
   const posts = [
@@ -42,6 +43,7 @@ export default function App() {
       {/* <PostList posts={posts} /> */}
       {/* <TextEditor /> */}
       <PostForm />
+      <Home />
     </div>
   );
 }

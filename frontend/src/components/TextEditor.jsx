@@ -1,4 +1,3 @@
-import { useState } from "react";
 import RichTextEditor from "reactjs-tiptap-editor";
 import { BaseKit } from "reactjs-tiptap-editor";
 import { Blockquote } from "reactjs-tiptap-editor/blockquote";
@@ -139,8 +138,8 @@ const extensions = [
   }),
 ];
 
-export function TextEditor() {
-  const [content, setContent] = useState("");
+export function TextEditor({content, setContent}) {
+  // const [content, setContent] = useState("");
 
   const onChangeContent = (value) => {
     setContent(value);
