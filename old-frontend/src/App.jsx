@@ -1,3 +1,4 @@
+import { Navbar } from "./components/Navbar";
 import { TextEditor } from "./components/TextEditor";
 import { PostForm } from "./features/PostForm";
 import PostList from "./features/PostList";
@@ -42,6 +43,7 @@ export default function App() {
     <div className="p-4">
       {/* <PostList posts={posts} /> */}
       {/* <TextEditor /> */}
+      <Navbar />
       <PostForm />
       <Home />
     </div>
